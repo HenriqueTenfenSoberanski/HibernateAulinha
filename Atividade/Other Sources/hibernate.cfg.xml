@@ -15,6 +15,10 @@
        
         <!--  Cria/Atualiza as tabelas automaticamente no banco  -->
         <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <mapping class = "ifc.ibirama.atividade.bombeiro.Bombeiro"/>
+        <mapping class = "ifc.ibirama.atividade.viatura.Viatura"/>
+        <mapping class = "ifc.ibirama.atividade.viatura.Patente"/>
     </session-factory>
 </hibernate-configuration>
 

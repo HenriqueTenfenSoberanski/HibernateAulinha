@@ -2,103 +2,95 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ifc.ibirama.atividade;
+package ifc.ibirama.atividade.bombeiro;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
-/**
- *
- * @author aluno
- */
+@Entity
+@Table(name = "Bombeiro")
 public class Bombeiro {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "bom_id")
     private Integer Id;
+
+    @Column(name = "bom_cpf", length = 11, unique = true, nullable = false)
     private String Cpf;
+
+    @Column(name = "bom_data_nascimento", nullable = false)
     private LocalDate DataNascimento;
+
+    @Column(name = "bom_nome_completo", length = 45, nullable = false)
     private String NomeCompleto;
+
+    @Column(name = "bom_nome_guerra", length = 45, unique = true, nullable = false)
     private String Guerra;
 
-    /**
-     * @return the id
-     */
     public Integer getId() {
         return Id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(Integer id) {
         this.Id = id;
     }
 
-    /**
-     * @return the cpf
-     */
     public String getCpf() {
         return Cpf;
     }
 
-    /**
-     * @param cpf the cpf to set
-     */
     public void setCpf(String cpf) {
         this.Cpf = cpf;
     }
 
-    /**
-     * @return the dataNascimento
-     */
     public LocalDate getDataNascimento() {
         return DataNascimento;
     }
 
-    /**
-     * @param dataNascimento the dataNascimento to set
-     */
     public void setDataNascimento(LocalDate dataNascimento) {
         this.DataNascimento = dataNascimento;
     }
 
-    /**
-     * @return the nomeCompleto
-     */
     public String getNomeCompleto() {
         return NomeCompleto;
     }
 
-    /**
-     * @param nomeCompleto the nomeCompleto to set
-     */
     public void setNomeCompleto(String nomeCompleto) {
         this.NomeCompleto = nomeCompleto;
     }
 
-    /**
-     * @return the guerra
-     */
     public String getGuerra() {
         return Guerra;
     }
 
-    /**
-     * @param guerra the guerra to set
-     */
     public void setGuerra(String guerra) {
         this.Guerra = guerra;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Bombeiro) { 
-           Bombeiro aux = (Bombeiro)obj;
-        }
-            if ((aux.getId().equals(this.Id)) && (aux.getCpf().equals(this.Cpf))){
-                
-            
-        }else {
+        if (obj instanceof Bombeiro) {
+            Bombeiro aux = (Bombeiro) obj;
+
+            if ((aux.getId().equals(this.Id))
+                    && (aux.getCpf().equals(this.Cpf))) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
             return false;
         }
     }
-    
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
