@@ -1,6 +1,6 @@
 
 
-package ifc.ibirama.atividade.status;
+package ifc.ibirama.atividade.statusBom;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,17 +11,17 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "StatusBombeiro")
-public class Status {
+public class StatusBom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sta_id")
+    @Column(name = "stb_id")
     private Integer Id;
 
-    @Column(name = "sta_nome", length = 45, unique = true, nullable = false)
-    private String Nome;
+    @Column(name = "stb_Sgla", length = 45, unique = true, nullable = false)
+    private String Sigla;
 
-    @Column(name = "sta_descricao", length = 100, nullable = false)
+    @Column(name = "stb_descricao", length = 5, nullable = false)
     private String Descricao;
 
     public Integer getId() {
@@ -32,12 +32,12 @@ public class Status {
         this.Id = id;
     }
 
-    public String getNome() {
-        return Nome;
+    public String getSigla() {
+        return Sigla;
     }
 
-    public void setNome(String nome) {
-        this.Nome = nome;
+    public void setSigla(String sigla) {
+        this.Sigla = sigla;
     }
 
     public String getDescricao() {
@@ -50,11 +50,11 @@ public class Status {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Status) {
-            Status aux = (Status) obj;
+        if (obj instanceof StatusBom) {
+            StatusBom aux = (StatusBom) obj;
 
             if ((aux.getId().equals(this.Id))
-                    && (aux.getNome().equals(this.Nome))) {
+                    && (aux.getSigla().equals(this.Sigla))) {
                 return true;
             } else {
                 return false;
