@@ -12,74 +12,84 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 
+/**
+ *
+ * @author aluno
+ */
 @Entity
-@Table(name = "Bombeiro")
+@Table(name="Bombeiro")
 public class Bombeiro {
+    
+    @OneToOne
+    @JoinColumn(name = "bom_id", unique = true);
+    private Usuario usuario;
+    
+    public Bombeiro(Usuario ususario) {
+        this.ususario = ususario;
+    }
 
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bom_id")
-    private Integer Id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="bom_id")
+    private Integer id;
+    @Column(name="bom_cpf", length=11, unique=true , nullable=false)
+    private String cpf;
+    @Column(name="bom_Data_nacimento", nullable=false)
+    private LocalDate data_Nacimento;
+    @Column(name="bom_nome_completo", length=45,nullable=false)
+    private String Nome;
+    @Column(name="bom_nome_guerra", length=45, unique=true , nullable=false)
+    private String Nome_Guerra;
 
-    @Column(name = "bom_cpf", length = 11, unique = true, nullable = false)
-    private String Cpf;
-
-    @Column(name = "bom_data_nascimento", nullable = false)
-    private LocalDate DataNascimento;
-
-    @Column(name = "bom_nome_completo", length = 45, nullable = false)
-    private String NomeCompleto;
-
-    @Column(name = "bom_nome_guerra", length = 45, unique = true, nullable = false)
-    private String Guerra;
+    public Bombeiro() {
+    }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public String getCpf() {
-        return Cpf;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        this.Cpf = cpf;
+        this.cpf = cpf;
     }
 
-    public LocalDate getDataNascimento() {
-        return DataNascimento;
+    public LocalDate getData_Nacimento() {
+        return data_Nacimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.DataNascimento = dataNascimento;
+    public void setData_Nacimento(LocalDate data_Nacimento) {
+        this.data_Nacimento = data_Nacimento;
     }
 
-    public String getNomeCompleto() {
-        return NomeCompleto;
+    public String getNome() {
+        return Nome;
     }
 
-    public void setNomeCompleto(String nomeCompleto) {
-        this.NomeCompleto = nomeCompleto;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
-    public String getGuerra() {
-        return Guerra;
+    public String getNome_Guerra() {
+        return Nome_Guerra;
     }
 
-    public void setGuerra(String guerra) {
-        this.Guerra = guerra;
+    public void setNome_Guerra(String Nome_Guerra) {
+        this.Nome_Guerra = Nome_Guerra;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Bombeiro) {
             Bombeiro aux = (Bombeiro) obj;
-
-            if ((aux.getId().equals(this.Id))
-                    && (aux.getCpf().equals(this.Cpf))) {
+            if ((aux.getId().equals(this.id)) && (aux.getCpf().equals(this.cpf))) {
                 return true;
             } else {
                 return false;
@@ -87,10 +97,12 @@ public class Bombeiro {
         } else {
             return false;
         }
+        
     }
-
     @Override
-    public int hashCode() {
+            
+    public int hashCode(){
         return getClass().hashCode();
     }
+    
 }

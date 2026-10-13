@@ -18,7 +18,17 @@
         
         <mapping class = "ifc.ibirama.atividade.bombeiro.Bombeiro"/>
         <mapping class = "ifc.ibirama.atividade.viatura.Viatura"/>
-        <mapping class = "ifc.ibirama.atividade.viatura.Patente"/>
+        <mapping class = "ifc.ibirama.atividade.patente.Patente"/>
+        <mapping class = "ifc.ibirama.atividade.AutoEsc.AutoEscada
+        <mapping class = "ifc.ibirama.atividade.AutoTanque.AutoTanque"/>
+        <mapping class = "ifc.ibirama.atividade.Especialidade.Especialidade"/>
+        <mapping class = "ifc.ibirama.atividade.TelefoneContato.TelefoneContato"/>
+        <mapping class = "ifc.ibirama.atividade.UniResgate.UnidadeResgate"/>
+        <mapping class = "ifc.ibirama.atividade.statusBom.StatusBom"/>
+        <mapping class = "ifc.ibirama.atividade.statusVia.StatusVia"/>
+        <mapping class = "ifc.ibirama.atividade.util.HibernateUtil"/>
+        
+        
     </session-factory>
 </hibernate-configuration>
 

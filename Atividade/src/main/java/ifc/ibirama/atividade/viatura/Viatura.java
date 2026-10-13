@@ -31,10 +31,10 @@ public class Viatura {
     @Column(name = "via_combustivel", length = 45, nullable = false)
     private String Combustivel;
 
-    @Column(name = "via_modelo", length = 45, nullable = false)
+    @Column(name = "via_Ultima_Revisao", length = 45, nullable = false)
     private LocalDate UltimaRevisao;
 
-    @Column(name = "via_ano", nullable = false)
+    @Column(name = "via_km", nullable = false)
     private Integer Km;
 
     /**
@@ -110,8 +110,7 @@ public class Viatura {
         if (obj instanceof Viatura) {
             Viatura aux = (Viatura) obj;
 
-            if ((aux.getId().equals(this.Id))
-                    && (aux.getPlaca().equals(this.Placa))) {
+            if ((aux.getId().equals(this.Id)) && (aux.getPlaca().equals(this.Placa))) {
                 return true;
             } else {
                 return false;
