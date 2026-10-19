@@ -16,11 +16,19 @@ import jakarta.persistence.Id;
 public class TelefoneContato {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "autt_id")
-    private Integer Id;
-    private String Numero;
-    private String Tipo;
-
+    @Column(name = "tec_id")
+    private Integer id;
+    @Column(name = "tec_numero", length = 11, nullable = false,unique = true)
+    private String numero;
+    @Column(name = "tec_tipo", length = 5, nullable = false)
+    private String tipo;
+    @ManyToOne
+    @JoinColumn(name="bom_id",, unique=false)
+    private Bombeiro bombeiro;
+    
+    private Set<Patente> patente = new HashSet<;
+    
+    
     /**
      * @return the id
      */
