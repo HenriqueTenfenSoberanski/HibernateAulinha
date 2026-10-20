@@ -4,10 +4,16 @@
  */
 package ifc.ibirama.atividade.TelefoneContato;
 
+import ifc.ibirama.atividade.bombeiro.Bombeiro;
+import ifc.ibirama.atividade.patente.Patente;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -23,7 +29,7 @@ public class TelefoneContato {
     @Column(name = "tec_tipo", length = 5, nullable = false)
     private String tipo;
     @ManyToOne
-    @JoinColumn(name="bom_id",, unique=false)
+    @JoinColumn(name="bom_id", unique=false)
     private Bombeiro bombeiro;
     
     private Set<Patente> patente = new HashSet<;
